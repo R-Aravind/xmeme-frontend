@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const apiUrl = "http://127.0.0.1:8000/api";
+import { apiUrl } from './App';
 
 function Memes() {
   const [memes, setMemes] = useState([]);
