@@ -1,7 +1,5 @@
 import React from 'react';
-import { MemeForm } from './MemeForm';
-import { Timeline } from './Timeline';
-
+import XMemes from './XMemes';
 
 export const apiUrl = "http://127.0.0.1:8000/api";
 
@@ -9,8 +7,10 @@ function App() {
   
   return (
     <div>
-      <MemeForm/>
-      <Timeline/>
+      <header className="header">
+        <h1 className="font-semibold">XMEME</h1>
+      </header>
+      <XMemes/>      
     </div>
   );
 }
