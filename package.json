@@ -20,8 +20,10 @@
   },
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@fullhuman/postcss-purgecss": "3.0.0",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9",
+    "parcel": "^2.0.0-nightly.579",
     "postcss": "^7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
