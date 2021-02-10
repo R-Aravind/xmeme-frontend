@@ -8,7 +8,7 @@ const XMemes = () => {
   const [memes, setMemes] = useState([]);
   
   const [memeID, MemeForm] = useMemeForm()
-  const [commentID, Timeline] = useTimeline(memes, loading);
+  const [commentID, likeID, MemeTimeline] = useTimeline(memes, loading);
 
   async function fetchMemes() {
     try {
@@ -23,12 +23,12 @@ const XMemes = () => {
 
   useEffect(() => {
     fetchMemes();
-  }, [memeID, commentID])
+  }, [memeID, commentID, likeID])
 
   return (
     <div className="md:flex">
       <MemeForm/>
-      <Timeline/>
+      <MemeTimeline/>
     </div>
   );
 }
