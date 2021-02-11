@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentForm from './CommentForm';
 
 const Card = (props) => {
+
+    // eslint-disable-next-line no-unused-vars
+    const [showComments, setShowCommments] = useState(false);
+    
     return (
         <div className="card" key={props.id}>
             <img src={props.url} className="mx-auto" alt="" />
@@ -18,9 +22,16 @@ const Card = (props) => {
             >
                 {props.likes} Likes
             </button>
-            <button className="ml-2 card-button">Comment</button>
+            <button className="ml-2 card-button"
+                onClick={e=> {
+                    setShowCommments(!showComments)
+                }}
+            >
+                Comment
+            </button>
             </div>
-
+            {showComments ? (
+            <div>
             {props.comments.length === 0 ? (<p></p>) : (
                 <div className="h-32 mt-2 overflow-y-auto text-sm">
                 { props.comments.map(comment => (
@@ -33,11 +44,16 @@ const Card = (props) => {
                 </div>    
                 
             )}
-            {/* Comment Form */}
+
             <CommentForm
                 postComment={props.postComment}
                 id={props.id}
             />
+            </div>
+            ) : (
+                <div></div>
+            )}
+
         </div>
     )
 }
