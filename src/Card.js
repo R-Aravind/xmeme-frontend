@@ -33,9 +33,9 @@ const Card = (props) => {
             {showComments ? (
             <div>
             {props.comments.length === 0 ? (<p></p>) : (
-                <div className="h-32 mt-2 overflow-y-auto text-sm">
+                <div className="mt-2 overflow-y-auto text-sm max-h-32">
                 { props.comments.map(comment => (
-                    <div key={comment.id}>    
+                    <div key={comment.id}> 
                     <p className="mt-2 font-semibold">{comment.name}</p>
                     <p>{comment.content}</p>
                     </div>

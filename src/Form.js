@@ -12,7 +12,7 @@ const Basic = (props) => (
          if (!values.url) {
            errors.url = 'Required';
          } else if (
-           !/^[A-Z0-9._%+-]+\.[A-Z]{2,}$/i.test(values.url)
+           !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i.test(values.url)
          ) {
            errors.url = 'Invalid URL';
          }
