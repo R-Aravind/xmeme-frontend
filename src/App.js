@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Basic from './Form'
 import Card from './Card'
 
-export const apiUrl = "http://127.0.0.1:8000/api";
+export const apiUrl = "http://3.21.6.196:8081/api";
 
 function App() {
   
@@ -97,19 +97,24 @@ async function postLike(like, likeCount) {
       { loading === "false" ? (<p>Error! couldnt retrieve memes.</p>) : 
 
       (
-        memes.map(item => (
-          <Card
-          key= {item.id}
-          postLike={postLike}
-          postComment={postComment}
-          id={item.id}
-          name={item.name}
-          url={item.url}
-          caption={item.caption}
-          likes={item.likes}
-          comments={item.comments}
-          />
-        ))
+        memes.length === 0 ? (
+          <div className="card">
+            <img className="mx-auto" src="https://i.kym-cdn.com/photos/images/newsfeed/001/668/803/f75.jpg" alt="sad meme"></img>
+          </div>
+          ) :
+          ( memes.map(item => (
+            <Card
+            key= {item.id}
+            postLike={postLike}
+            postComment={postComment}
+            id={item.id}
+            name={item.name}
+            url={item.url}
+            caption={item.caption}
+            likes={item.likes}
+            comments={item.comments}
+            />
+        )))
       )}
       </div>
     </div>
