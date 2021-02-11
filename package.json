@@ -23,6 +23,7 @@
     "@fullhuman/postcss-purgecss": "3.0.0",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9",
+    "formik": "^2.2.6",
     "parcel": "^2.0.0-nightly.579",
     "postcss": "^7",
     "react": "^17.0.1",
