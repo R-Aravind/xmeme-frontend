@@ -3,7 +3,6 @@ import CommentForm from './CommentForm';
 
 const Card = (props) => {
 
-    // eslint-disable-next-line no-unused-vars
     const [showComments, setShowCommments] = useState(false);
     
     return (
@@ -27,7 +26,7 @@ const Card = (props) => {
                     setShowCommments(!showComments)
                 }}
             >
-                Comment
+                {props.comments.length} Comments
             </button>
             </div>
             {showComments ? (

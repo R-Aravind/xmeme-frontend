@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Basic from './Form'
 import Card from './Card'
 
-export const apiUrl = "http://3.21.6.196:8081/api";
+export const apiUrl = "http://3.21.6.196/api";
 
 function App() {
   
