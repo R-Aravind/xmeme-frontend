@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Basic from './Form'
 import Card from './Card'
 
-export const apiUrl = "http://3.21.6.196/api";
+export const apiUrl = "http://3.21.6.196";
 
 function App() {
   
   const [memeID, setMemeID] = useState()
   const [commentID, setCommentID] = useState();
   const [likeID, setLikeID] = useState();
+  const [updateMemeID, setUpdateMemeID] = useState();
 
   const [loading, setLoading] = useState("");    
   const [memes, setMemes] = useState([]);
@@ -26,7 +27,7 @@ function App() {
 
   useEffect(() => {
     fetchMemes();
-  }, [likeID, memeID, commentID])
+  }, [likeID, memeID, commentID, updateMemeID])
 
   async function postMemes(meme) {
       try {
@@ -83,6 +84,25 @@ async function postLike(like, likeCount) {
     return [likeID];
 }
 
+async function updateMeme(meme) {
+  try {
+      const response = await fetch(`${apiUrl}/memes/`, {
+          method: "PATCH",
+          headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(meme)
+      });
+      const json = await response.json();
+      setUpdateMemeID(`${json.id}+${json.caption}+${json.url}`);
+      alert("Meme updated");
+  } catch (error) {
+    setUpdateMemeID(`error : ${error}`);
+  }
+  return [updateMemeID];
+}
+
   return (
     <div>
       <header className="header">
@@ -107,6 +127,7 @@ async function postLike(like, likeCount) {
             key= {item.id}
             postLike={postLike}
             postComment={postComment}
+            updateMeme={updateMeme}
             id={item.id}
             name={item.name}
             url={item.url}

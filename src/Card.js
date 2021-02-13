@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import CommentForm from './CommentForm';
+import EditMemeForm from './EditMemeForm';
 
 const Card = (props) => {
 
     const [showComments, setShowCommments] = useState(false);
-    
+    const [showEditMeme, setShowEditMeme] = useState(false);
+
     return (
         <div className="card" key={props.id}>
             <img src={props.url} className="mx-auto" alt="" />
@@ -23,11 +25,22 @@ const Card = (props) => {
             </button>
             <button className="ml-2 card-button"
                 onClick={e=> {
-                    setShowCommments(!showComments)
+                    setShowEditMeme(false);
+                    setShowCommments(!showComments);
                 }}
             >
                 {props.comments.length} Comments
             </button>
+            <button className="ml-2 card-button"
+                onClick={e=> {
+                    setShowCommments(false);
+                    setShowEditMeme(!showEditMeme);
+                }}
+            >
+                Edit Meme
+            </button>
+
+
             </div>
             {showComments ? (
             <div>
@@ -52,7 +65,20 @@ const Card = (props) => {
             ) : (
                 <div></div>
             )}
-
+            
+            {showEditMeme ? (
+                <EditMemeForm
+                id={props.id}
+                name={props.name}
+                caption={props.caption}
+                url={props.url}
+                updateMeme={props.updateMeme}
+                />
+            ) : (
+                <div></div>
+            )
+            }
+            
         </div>
     )
 }
